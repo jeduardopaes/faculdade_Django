@@ -24,6 +24,8 @@
             <td> {{cliente.telefone}} </td>
             <td> {{cliente.cep}} </td>
             <td> <a href="/cliente/deletar_cliente/?cliente_id={{cliente.id}}">Deletar</a> </td>
+            <td> <a href="/cliente/editar_cliente/?cliente_id={{cliente.id}}">editar</a> </td>
+            
         </tr>
         {% endfor %}
     </table>

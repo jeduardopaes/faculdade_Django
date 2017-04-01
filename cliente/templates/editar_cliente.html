@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cadastro_cliente</title>
+</head>
+<body>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+			<h1 Style="color:red;"> Atualização </h1>
+			<section>
+                <lable Style="color:red;">Nome</lable>
+                <input type="text" name="nome" value="{{cliente.nome}}" >
+            </section>
+            <section>
+                <lable Style="color:red;">E-mail</lable>
+                <input type="email"name="email" value="{{cliente.email}}" >
+            </section>
+            <section>
+                <lable Style="color:red;">Telefone</lable>
+                <input type="text" name="telefone" value="{{cliente.telefone}}" >
+            </section>
+            <section>
+                <lable Style="color:red;">CPF</lable>
+                <input type="text" name="cpf" value="{{cliente.cpf}}" >
+            </section>
+            <section>
+                <lable Style="color:red;">CEP</lable>
+                <input type="text" name="cep" value="{{cliente.cep}}" >
+            </section>
+			
+            <input type="submit" value="atualizar">
+            <input type="reset" value="Antigo">
+        </form>
+    </main>
+</body>
+</html>
+<!--
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista_Clientes</title>
+</head>
+<body> 
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>CEP</th>
+        </tr>
+        {% for cliente in lista_clientes %}
+        <tr>
+            <td> {{cliente.nome}} </td>
+            <td> {{cliente.cpf}} </td>
+            <td> {{cliente.email}} </td>
+            <td> {{cliente.telefone}} </td>
+            <td> {{cliente.cep}} </td>
+            <td> <a href="/cliente/deletar_cliente/?cliente_id={{cliente.id}}">Deletar</a> </td>
+            <td> <a href="/cliente/editar_cliente/?cliente_id={{cliente.id}}">editar</a> </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/cliente/cadastro_cliente/">CadastrarCliente</a>
+</body>
+</html>-->
