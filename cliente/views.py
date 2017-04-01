@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from .models import Cliente
+from django.db import IntegrityError
+
+#====== CLIENTES =================================================================================
+
+def cliente(request):
+    return render(request, 'cliente.html')
 
 def cadastro(request):
     if request.method =='POST':
@@ -8,8 +16,30 @@ def cadastro(request):
         cep = request.POST.get("cep")
         cpf = request.POST.get("cpf")
         telefone = request.POST.get("telefone")
-        Cliente.objects.create(nome = nome ,telefone = telefone ,email = email,cep = cep ,cpf = cpf)
+        info = {'nome':nome, 'email':email, 'cep':cep, 'cpf':cpf, 'telefone': telefone}
+        if nome == "" or email == "" or telefone == "" or cpf == "" or cep == "":
+            mensagem = "*Preencha todos os campos!"
+            return render(request, 'cadastro_cliente.html', { 'info':info, 'mensagem':mensagem })
+        else:
+            mensagem = "*Cadastro realizado com sucesso!"
+            try:
+                Cliente.objects.create(**info)
+            except IntegrityError:
+                mensagem = "cpf já existe!"
+            return render(request, 'cadastro_cliente.html', { 'info':info, 'mensagem':mensagem })
+        #return lista_cliente(request)
     return render(request, 'cadastro_cliente.html')
 
 def lista_cliente(request):
-    return render(request, 'lista_cliente.html')
+    lista_clientes = Cliente.objects.all()
+    return render(request, 'lista_cliente.html', {'lista_clientes':lista_clientes})
+
+def deletar_cliente(request):
+    id = request.GET.get('cliente_id')
+    cliente = Cliente.objects.get(id=id)
+    if request.method == 'POST':
+        Cliente.objects.get(id=id).delete()
+        return lista_cliente(request)
+    return render(request, 'deletar_cliente.html', {'cliente':cliente})
+
+#====== ROUPAS =================================================================================

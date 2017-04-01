@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^cadastro_cliente/', views.cadastro, name='cadastro'),
-    url(r'^lista_dos_clientes/', views.lista_cliente, name='index'),
+    url(r'^lista_dos_clientes/', views.lista_cliente, name='lista_cliente'),
+    url(r'^deletar_cliente/', views.deletar_cliente, name='deletar_cliente'),
 ]

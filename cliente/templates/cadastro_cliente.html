@@ -7,19 +7,35 @@
     <title>cadastro_cliente</title>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        nome
-        <input type="text" name="nome"> <br/>
-        email
-        <input type="text"name="email"><br/>
-        telefone
-        <input type="text" name="telefone"><br/>
-        cpf
-        <input type="text" name="cpf"><br/>
-        cep
-        <input type="text" name="cep"><br/>
-        <input type="submit" value="cadastrar" >
-    </form>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <section>
+                <lable>Nome</lable>
+                <input type="text" name="nome" value="{{info.nome}}" >
+            </section>
+            <section>
+                <lable>E-mail</lable>
+                <input type="email"name="email" value="{{info.email}}" >
+            </section>
+            <section>
+                <lable>Telefone</lable>
+                <input type="text" name="telefone" value="{{info.telefone}}" >
+            </section>
+            <section>
+                <lable>CPF</lable>
+                <input type="text" name="cpf" value="{{info.cpf}}" >
+            </section>
+            <section>
+                <lable>CEP</lable>
+                <input type="text" name="cep" value="{{info.cep}}" >
+            </section>
+            {% if mensagem %}
+                <p>{{mensagem}}</p>
+            {% endif %}
+            <input type="submit" value="Cadastrar">
+            <input type="reset" value="Limpar">
+        </form>
+    </main>
 </body>
 </html>
