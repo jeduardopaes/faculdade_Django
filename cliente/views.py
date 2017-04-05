@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-from .models import Cliente
+from .models import Cliente,Roupa
 from django.db import IntegrityError
 
 #====== CLIENTES =================================================================================
 
-def cliente(request):
-    return render(request, 'cliente.html')
-
-def cadastro(request):
+def cadastro_cliente(request):
     if request.method =='POST':
         nome = request.POST.get("nome")
         email = request.POST.get("email")
@@ -59,3 +56,19 @@ def editar_cliente(request):
     
 
 #====== ROUPAS =================================================================================
+def cadastro_roupa(request):
+    if request.method == 'POST':
+        nome = request.POST.get("nome")
+        tipo = request.POST.get("tipo")
+        cor = request.POST.get("cor")
+        descricao = request.POST.get("descricao")
+        valor = float(request.POST.get("valor"))
+        tamanho = request.POST.get("tamanho")
+        info = {'tamanho':tamanho,'nome':nome,'cor':cor,'descricao':descricao,'tipo':tipo,'valor':valor}
+        Roupa.objects.create(**info)
+        return render(request,'cadastro_roupa.html',{'info':info})
+    return render(request,'cadastro_roupa.html')
+
+def lista_roupa(request):
+    lista_roupas = Roupa.objects.all()
+    return render(request, 'lista_roupa.html', {'lista_roupas':lista_roupas})

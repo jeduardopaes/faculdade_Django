@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista_Clientes</title>
+</head>
+<body> 
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>tipo</th>
+            <th>cor</th>
+            <th>tamanho</th>
+            <th>valor</th>
+            <th>descrição</th>
+        </tr>
+        {% for roupa in lista_roupas %}
+        <tr>
+            <td> {{roupa.nome}} </td>
+            <td> {{roupa.tipo}} </td>
+            <td> {{roupa.cor}} </td>
+            <td> {{roupa.tamanho}} </td>
+            <td> {{roupa.valor}} </td>
+            <td> {{roupa.descricao}} </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/cliente/cadastro_roupa/">cadastrarRoupa</a>
+</body>
+</html>

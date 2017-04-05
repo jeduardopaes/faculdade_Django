@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cadastro_cliente</title>
+</head>
+<body>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <section>
+                <lable>Nome</lable>
+                <input type="text" name="nome" value="{{info.nome}}" >
+            </section>
+            <section>
+                <lable>tipo</lable>
+                <input type="text" name="tipo" value="{{info.tipo}}" >
+            </section>
+            <section>
+                <lable>tamanho</lable>
+                <input type="text" name="tamanho" value="{{info.tamanho}}" >
+            </section>
+            <section>
+                <lable>valor</lable>
+                <input type="text" name="valor" value="{{info.valor}}" >
+            </section>
+            <section>
+                <lable>cor</lable>
+                <input type="text" name="cor" value="{{info.cor}}" >
+            </section>
+            <section>
+                <lable>descrição</lable>
+                <input type="text" name="descricao" value="{{info.descricao}}" >
+            </section>
+            {% if tamanho %}
+                <p>{{tamanho}}</p>
+            {% endif %}
+            <input type="submit" value="Cadastrar">
+            <input type="reset" value="Limpar">
+            <a href="/cliente/lista_roupa/">listarRoupas</a>
+
+            
+        </form>
+    </main>
+</body>
+</html>
