@@ -58,17 +58,30 @@ def editar_cliente(request):
 #====== ROUPAS =================================================================================
 def cadastro_roupa(request):
     if request.method == 'POST':
+        quantidade = int(request.POST.get("quantidade"))
         nome = request.POST.get("nome")
         tipo = request.POST.get("tipo")
         cor = request.POST.get("cor")
         descricao = request.POST.get("descricao")
         valor = float(request.POST.get("valor"))
         tamanho = request.POST.get("tamanho")
-        info = {'tamanho':tamanho,'nome':nome,'cor':cor,'descricao':descricao,'tipo':tipo,'valor':valor}
-        Roupa.objects.create(**info)
+        info = {'tamanho':tamanho,'nome':nome,'cor':cor,'descricao':descricao,'tipo':tipo,'valor':valor,'situacao':"Disponível"}
+        
+        while quantidade>0 :
+            Roupa.objects.create(**info)
+            quantidade -= 1
+        
         return render(request,'cadastro_roupa.html',{'info':info})
     return render(request,'cadastro_roupa.html')
 
 def lista_roupa(request):
     lista_roupas = Roupa.objects.all()
     return render(request, 'lista_roupa.html', {'lista_roupas':lista_roupas})
+
+def deletar_roupa(request):
+    roupa_id = request.GET.get('roupa_id')
+    roupa = Roupa.objects.get(id=roupa_id)
+    if request.method == 'POST':
+        Roupa.objects.get(id=roupa_id).delete()
+        return lista_roupa(request)
+    return render(request, 'deletar_roupa.html', {'roupa':roupa})

@@ -26,4 +26,5 @@ class Roupa(models.Model):
     valor = models.DecimalField(max_digits=20, decimal_places=2)
     cor = models.CharField(max_length=25)
     tipo = models.CharField(max_length=15)
-    descricao = models.CharField(max_length=15)
+    descricao = models.TextField()
+    situacao = models.CharField(max_length=50)

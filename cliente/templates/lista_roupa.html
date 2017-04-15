@@ -25,6 +25,8 @@
             <td> {{roupa.tamanho}} </td>
             <td> {{roupa.valor}} </td>
             <td> {{roupa.descricao}} </td>
+            <td> {{roupa.situacao}} </td>
+            <td> <a href="/cliente/deletar_roupa/?roupa_id={{roupa.id}}">Deletar</a> </td>
             
         </tr>
         {% endfor %}

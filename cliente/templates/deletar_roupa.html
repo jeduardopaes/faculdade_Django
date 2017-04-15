@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>deletar_roupa</title>
+</head>
+<body>
+    <h1>Deseja deletar esta roupa?</h1>
+    <p>Nome:{{roupa.nome}}</p>
+    <p>Tamanho:{{roupa.tamanho}}</p>
+    <p>Descrição:{{roupa.descricao}}</p>
+    <p>Cor:{{roupa.cor}}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Deletar" style="background-color: red; color: white;">
+    </form>
+</body>
+</html>
