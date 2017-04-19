@@ -52,6 +52,11 @@ def editar_cliente(request):
         cliente.save()
         return lista_cliente(request)
     return render(request, 'editar_cliente.html', {'cliente':cliente})
+
+def home(request):
+	return render(request,'index.html')
+
+
 #======== Desenvolvedor: bernardo =======
     
 
@@ -85,3 +90,17 @@ def deletar_roupa(request):
         Roupa.objects.get(id=roupa_id).delete()
         return lista_roupa(request)
     return render(request, 'deletar_roupa.html', {'roupa':roupa})
+'''
+def editar_roupa(request):
+    id = request.GET.get('cliente_id')
+    cliente = Cliente.objects.get(id=id)
+    if request.method == 'POST':
+        cliente.nome = request.POST.get("nome")
+        cliente.email = request.POST.get("email")
+        cliente.cep = request.POST.get("cep")
+        cliente.cpf = request.POST.get("cpf")
+        cliente.telefone = request.POST.get("telefone") 
+        cliente.save()
+        return lista_cliente(request)
+    return render(request, 'editar_cliente.html', {'cliente':cliente})'''
+
